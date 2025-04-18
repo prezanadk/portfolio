@@ -667,14 +667,14 @@ footer p {
 
 
 /* Make logo disappear on screens up to 414px (covers iPhone 13 and similar devices) */
-@media (max-width: 414px) {
+@media (max-width: 420px) {
   .logo {
     display: none;
   }
 }
 
 /* Make logo reappear on screens larger than 414px */
-@media (min-width: 415px) {
+@media (min-width: 421px) {
   .logo {
     display: block;
   }
