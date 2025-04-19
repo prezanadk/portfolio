@@ -86,22 +86,35 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // Animate counters
-    const counters = document.querySelectorAll('.counter');
-    
-    const animateCounters = () => {
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-            const increment = target / 30;
-            
+    // Animate counters with support for "25+" and similar
+const counters = document.querySelectorAll('.counter');
+
+const animateCounters = () => {
+    counters.forEach(counter => {
+        const targetText = counter.getAttribute('data-target');
+        const match = targetText.match(/\d+/);
+        const suffix = match ? targetText.replace(match[0], '') : '';
+        
+        if (!match) return;
+
+        const target = parseInt(match[0]);
+        let count = 0;
+        const increment = Math.max(1, target / 30);
+
+        const updateCount = () => {
             if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(animateCounters, 50);
+                count += increment;
+                counter.innerText = Math.ceil(count) + suffix;
+                setTimeout(updateCount, 50);
             } else {
-                counter.innerText = target;
+                counter.innerText = target + suffix;
             }
-        });
-    };
+        };
+
+        updateCount();
+    });
+};
+
     
     // Intersection Observer for animations
     const observerOptions = {
