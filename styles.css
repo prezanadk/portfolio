@@ -176,6 +176,7 @@ nav {
 /* Hero Section */
 .hero {
     padding: 5rem 0;
+    height: 100vh;
 }
 
 .hero-content {
