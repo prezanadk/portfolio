@@ -19,6 +19,9 @@
 
 html {
     scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 body {
@@ -26,6 +29,9 @@ body {
     background-color: var(--background);
     color: var(--text-color);
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 .container {
